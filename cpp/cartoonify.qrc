@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/cartoonify">
+        <file alias="cartoonify">../assets/cartoonify.png</file>
+    </qresource>
+</RCC>
