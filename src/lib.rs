@@ -131,6 +131,9 @@ use wasm_bindgen::prelude::*;
 #[cfg(target_arch = "wasm32")]
 lenna_core::export_wasm_plugin!(Cartoonify);
 
+#[cfg(not(target_arch = "wasm32"))]
+lenna_core::export_c_plugin!(Cartoonify);
+
 #[cfg(test)]
 mod tests {
     use super::*;

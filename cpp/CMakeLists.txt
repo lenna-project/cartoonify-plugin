@@ -109,10 +109,8 @@ target_compile_options(${target}
 target_link_libraries(${target}
     PRIVATE
     ${DEFAULT_LINKER_OPTIONS}
-    PUBLIC
-    lenna_cartoonify_plugin
+    ${CMAKE_CURRENT_BINARY_DIR}/../liblenna_cartoonify_plugin.a
 )
-
 
 # 
 # Deployment

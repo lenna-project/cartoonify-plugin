@@ -25,21 +25,27 @@ using namespace lenna;
 using namespace lenna::plugin;
 using namespace lenna::plugin::cartoonify;
 
+extern "C" const char * lenna_plugin_name();
+extern "C" const char * lenna_plugin_title();
+extern "C" const char * lenna_plugin_version();
+extern "C" const char * lenna_plugin_author();
+extern "C" const char * lenna_plugin_description();
+
 Cartoonify::Cartoonify() { widget = 0; }
 
 Cartoonify::~Cartoonify() {
   if (this->widget) delete this->widget;
 }
 
-std::string Cartoonify::getName() { return std::string("cartoonify"); }
+std::string Cartoonify::getName() { return std::string(lenna_plugin_name()); }
 
-std::string Cartoonify::getTitle() { return tr("Cartoonify").toStdString(); }
+std::string Cartoonify::getTitle() { return std::string(lenna_plugin_title()); }
 
-std::string Cartoonify::getVersion() { return std::string("0.1"); }
+std::string Cartoonify::getVersion() { return std::string(lenna_plugin_version()); }
 
-std::string Cartoonify::getAuthor() { return std::string("chriamue"); }
+std::string Cartoonify::getAuthor() { return std::string(lenna_plugin_author()); }
 
-std::string Cartoonify::getDescription() { return tr("gives images cartoon style").toStdString(); }
+std::string Cartoonify::getDescription() { return std::string(lenna_plugin_description()); }
 
 QIcon Cartoonify::getIcon() { return QIcon(":/plugins/cartoonify/cartoonify"); }
 

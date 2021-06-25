@@ -7,7 +7,7 @@ description = "Plugin to create a cartoon style."
 license = "MIT"
 
 [lib]
-crate-type = ["cdylib", "staticlib", "rlib"]
+crate-type = ["staticlib", "cdylib", "rlib"]
 
 [features]
 default = ["plugin"]
