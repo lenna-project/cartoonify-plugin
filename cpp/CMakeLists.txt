@@ -32,7 +32,7 @@ endif()
 # 
 
 file(GLOB sources
-"*.cpp" "*.h" "*.ui" "*.qrc")
+"*.cpp" "*.h" "*.hpp" "*.ui" "*.qrc")
 
 
 # 
@@ -68,6 +68,7 @@ target_include_directories(${target}
     ${DEFAULT_INCLUDE_DIRECTORIES}
     ${CMAKE_CURRENT_BINARY_DIR}
     ${PROJECT_BINARY_DIR}/source/include
+    ${CMAKE_BINARY_DIR}/../target
 )
 
 

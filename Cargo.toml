@@ -5,6 +5,7 @@ edition = "2018"
 version = "0.1.0"
 description = "Plugin to create a cartoon style."
 license = "MIT"
+build = "build.rs"
 
 [lib]
 crate-type = ["staticlib", "cdylib", "rlib"]
@@ -22,10 +23,14 @@ serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 console_error_panic_hook = "0.1.6"
 wasm-bindgen = { version = "0.2", features = ["serde-serialize"] }
+libc = "0.2"
 lenna_core = {git = "https://github.com/lenna-project/lenna-core", branch="main"}
 
 [dev-dependencies]
 wasm-bindgen-test = "0.2"
+
+[build-dependencies]
+cbindgen = "0.19"
 
 [profile.release]
 opt-level = "s"

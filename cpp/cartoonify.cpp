@@ -21,20 +21,18 @@
 
 #include <QtGui/QPainter>
 
+#include <lenna_cartoonify_plugin.hpp>
+
 using namespace lenna;
 using namespace lenna::plugin;
 using namespace lenna::plugin::cartoonify;
 
-extern "C" const char * lenna_plugin_name();
-extern "C" const char * lenna_plugin_title();
-extern "C" const char * lenna_plugin_version();
-extern "C" const char * lenna_plugin_author();
-extern "C" const char * lenna_plugin_description();
-
 Cartoonify::Cartoonify() { widget = 0; }
 
-Cartoonify::~Cartoonify() {
-  if (this->widget) delete this->widget;
+Cartoonify::~Cartoonify()
+{
+  if (this->widget)
+    delete this->widget;
 }
 
 std::string Cartoonify::getName() { return std::string(lenna_plugin_name()); }
@@ -49,19 +47,23 @@ std::string Cartoonify::getDescription() { return std::string(lenna_plugin_descr
 
 QIcon Cartoonify::getIcon() { return QIcon(":/plugins/cartoonify/cartoonify"); }
 
-QWidget *Cartoonify::getWidget() {
-  if (!this->widget) {
+QWidget *Cartoonify::getWidget()
+{
+  if (!this->widget)
+  {
     this->widget = new Widget();
   }
   return this->widget;
 }
 
-void Cartoonify::edit(std::shared_ptr<LennaImage> img) {
+void Cartoonify::edit(std::shared_ptr<LennaImage> img)
+{
   int size = widget->getRadius();
   cv::blur(img->getImage(), img->getImage(), cv::Size(size, size));
 }
 
-std::shared_ptr<Plugin> Cartoonify::getInstance(QString uid) {
+std::shared_ptr<Plugin> Cartoonify::getInstance(QString uid)
+{
   std::shared_ptr<Plugin> plugin = std::shared_ptr<Plugin>(new Cartoonify());
   plugin->setUID(uid);
   return plugin;

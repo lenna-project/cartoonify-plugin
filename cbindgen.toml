@@ -1,0 +1,11 @@
+include_guard = "lenna_plugin_h"
+language = "C++"
+
+[parse]
+parse_deps = true
+expand = ["lenna_cartoonify_plugin", "lenna_core"]
+include = ["lenna_core"]
+extra_bindings = ["lenna_core"]
+
+[macro_expansion]
+bitflags = false
