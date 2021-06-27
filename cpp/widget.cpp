@@ -64,9 +64,9 @@ void Widget::loadState() {
   QSettings settings(QCoreApplication::organizationName(),
                      QCoreApplication::applicationName());
   settings.beginGroup("plugins");
-  settings.beginGroup("Blur");
+  settings.beginGroup("Cartoonify");
 
-  ui->blurCheckBox->setChecked(settings.value("BlurUse", false).toBool());
+  ui->blurCheckBox->setChecked(settings.value("CartoonifyUse", false).toBool());
   ui->posXSpinBox->setValue(settings.value("PosX", 10).toInt());
   ui->posYSpinBox->setValue(settings.value("PosY", 10).toInt());
   ui->widthSpinBox->setValue(settings.value("Width", 80).toInt());
@@ -78,9 +78,9 @@ void Widget::saveState() {
   QSettings settings(QCoreApplication::organizationName(),
                      QCoreApplication::applicationName());
   settings.beginGroup("plugins");
-  settings.beginGroup("Blur");
+  settings.beginGroup("Cartoonify");
 
-  settings.setValue("BlurUse", ui->blurCheckBox->isChecked());
+  settings.setValue("CartoonifyUse", ui->blurCheckBox->isChecked());
   settings.setValue("PosX", ui->posXSpinBox->value());
   settings.setValue("PosY", ui->posYSpinBox->value());
   settings.setValue("Width", ui->widthSpinBox->value());
@@ -92,7 +92,7 @@ void Widget::updateImage() {
   QImage image = QImage(*previewImage);
 
   if (ui->blurCheckBox->isChecked()) {
-    blur(&image);
+    cartoonify(&image);
   }
   this->previewImageLabel->setPixmap(QPixmap::fromImage(image));
 }
@@ -107,11 +107,11 @@ void Widget::setPreviewImage(QString img) {
 }
 
 void Widget::on_resetPushButton_clicked() {
-  setPreviewImage(QString(":/reihenaufnahme/r5"));
+  setPreviewImage(QString(":/lenna/logo"));
 }
 
 // Function blurs a rect of image by percentage
-void Widget::blur(QImage *image) {
+void Widget::cartoonify(QImage *image) {
   // uses percentage
 
   int fullw = image->width();

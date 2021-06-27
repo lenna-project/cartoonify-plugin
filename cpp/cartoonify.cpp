@@ -18,6 +18,7 @@
 
 #include "cartoonify.h"
 #include "widget.h"
+#include "base64.h"
 
 #include <QtGui/QPainter>
 
@@ -58,8 +59,15 @@ QWidget *Cartoonify::getWidget()
 
 void Cartoonify::edit(std::shared_ptr<LennaImage> img)
 {
-  int size = widget->getRadius();
-  cv::blur(img->getImage(), img->getImage(), cv::Size(size, size));
+  std::vector<uchar> buf;
+  cv::imencode(".png", img->getImage(), buf);
+  auto *enc_msg = reinterpret_cast<unsigned char *>(buf.data());
+  std::string encoded = base64_encode(enc_msg, buf.size());
+  std::string processed(lenna_plugin_process_base64(encoded.c_str()));
+  std::string dec_png = base64_decode(processed);
+  std::vector<uchar> data(dec_png.begin(), dec_png.end());
+  cv::Mat processed_img = cv::imdecode(cv::Mat(data), 1);
+  img->setMat(processed_img);
 }
 
 std::shared_ptr<Plugin> Cartoonify::getInstance(QString uid)

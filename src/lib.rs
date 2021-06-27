@@ -148,7 +148,7 @@ mod tests {
         };
         assert_eq!(cartoonify.name(), "cartoonify");
         let mut img =
-            Box::new(lenna_core::io::read::read_from_file("../lenna.png".into()).unwrap());
+            Box::new(lenna_core::io::read::read_from_file("assets/cartoonify.png".into()).unwrap());
         cartoonify.process(config, &mut img).unwrap();
         img.name = "test".to_string();
         lenna_core::io::write::write_to_file(&img, image::ImageOutputFormat::Jpeg(80)).unwrap();

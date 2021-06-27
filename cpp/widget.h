@@ -57,7 +57,7 @@ class Widget : public QWidget {
   void loadState();
   void saveState();
 
-  void blur(QImage *image);
+  void cartoonify(QImage *image);
   PreviewImageLabel *previewImageLabel;
 
   QString previewImageSrc;

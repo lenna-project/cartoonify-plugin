@@ -22,7 +22,7 @@ corrosion_import_crate(MANIFEST_PATH Cargo.toml)
 
 message(STATUS "lenna plugin: ${cart}")
 
-option(BUILD_SHARED_LIBS     "Build shared instead of static libraries."              OFF)
+option(BUILD_SHARED_LIBS     "Build shared instead of static libraries."              ON)
 
 # Set output directories
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR})
