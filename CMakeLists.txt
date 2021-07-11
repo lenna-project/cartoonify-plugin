@@ -15,8 +15,9 @@ find_package(Qt5Core REQUIRED)
 find_package(Qt5Widgets REQUIRED)
 find_package(Qt5Network REQUIRED)
 find_package(Qt5LinguistTools REQUIRED)
-find_package( OpenCV 4 REQUIRED )
-find_package( lenna )
+find_package(OpenCV 4 REQUIRED)
+find_package(exiv2 REQUIRED)
+find_package(lenna)
 
 corrosion_import_crate(MANIFEST_PATH Cargo.toml)
 
