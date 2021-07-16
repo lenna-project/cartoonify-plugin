@@ -5,6 +5,7 @@ edition = "2018"
 version = "0.1.0"
 description = "Plugin to create a cartoon style."
 license = "MIT"
+repository = "https://github.com/lenna-project/cartoonify-plugin"
 build = "build.rs"
 
 [lib]

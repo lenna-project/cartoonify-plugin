@@ -21,8 +21,6 @@ find_package(lenna)
 
 corrosion_import_crate(MANIFEST_PATH Cargo.toml)
 
-message(STATUS "lenna plugin: ${cart}")
-
 option(BUILD_SHARED_LIBS     "Build shared instead of static libraries."              ON)
 
 # Set output directories
