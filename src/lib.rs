@@ -134,6 +134,14 @@ lenna_core::export_wasm_plugin!(Cartoonify);
 #[cfg(not(target_arch = "wasm32"))]
 lenna_core::export_c_plugin!(Cartoonify);
 
+#[cfg(feature = "python")]
+use pyo3::prelude::*;
+#[cfg(feature = "python")]
+#[allow(non_camel_case_types)]
+type lenna_cartoonify_plugin = Cartoonify;
+#[cfg(feature = "python")]
+lenna_core::export_python_plugin!(lenna_cartoonify_plugin);
+
 #[cfg(test)]
 mod tests {
     use super::*;

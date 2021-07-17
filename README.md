@@ -40,7 +40,7 @@ npm run build
 The plugin can be hosted using
 
 ```bash
-
+npm run start
 ```
 
 A server runs on localhost:3002 now.
@@ -64,3 +64,47 @@ make
 ```
 
 The file build/plugins/libcartoonify.so can be copied to the lenna plugins folder.
+
+## python version
+
+The plugin can build python bindings.
+
+### build
+
+Create a virtual environment for python.
+
+```bash
+virtualenv -p python3 .venv
+source .venv/bin/activate
+pip install .
+```
+
+### usage
+
+Import lenna_cartoonify_plugin in a python environment.
+
+```python
+from PIL import Image
+from numpy import asarray
+import lenna_cartoonify_plugin
+print(lenna_cartoonify_plugin.description())
+
+image = Image.open('assets/cartoonify.png')
+data = asarray(image)
+print(data.shape)
+
+config = lenna_cartoonify_plugin.default_config()
+print(config)
+processed = lenna_cartoonify_plugin.process(config, data)
+print(processed.shape)
+Image.fromarray(processed).save('lenna_test_out.png')
+```
+
+### test
+
+Run the python [test file](src/test.py) which loads the [cartoonify.png](assets/cartoonify.png) and converts it.
+
+```bash
+pip install pillow
+python src/test.py
+```
