@@ -2,7 +2,7 @@
 name = "lenna_cartoonify_plugin"
 authors = ["Christian <chriamue@gmail.com>"]
 edition = "2018"
-version = "0.1.0"
+version = "0.1.1"
 description = "Plugin to create a cartoon style."
 license = "MIT"
 repository = "https://github.com/lenna-project/cartoonify-plugin"
@@ -48,4 +48,3 @@ wasm-opt = true
 
 [package.metadata.maturin]
 classifiers = ["Programming Language :: Python"]
-requires-dist = ["numpy"]

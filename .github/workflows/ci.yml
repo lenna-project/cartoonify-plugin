@@ -16,6 +16,7 @@ jobs:
           version: 'latest'
     
       - run: rustup override set nightly
+
       - run: wasm-pack build
 
       - name: Use Node.js
@@ -29,6 +30,17 @@ jobs:
         run: NODE_ENV=production npm run build --if-present
 
       - run: mv ./dist ./public
+      - run: cargo clean
+
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - run: pip install maturin numpy
+      - name: build python wheel 
+        run: RUST_BACKTRACE=full pip wheel .
+
+      - run: mv *.whl ./public/
 
       - name: Deploy Documentation
         uses: peaceiris/actions-gh-pages@v3
